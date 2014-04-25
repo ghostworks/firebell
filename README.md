@@ -7,11 +7,19 @@ Firebell notifier for Ruby
 ```ruby
 firebell = Firebell::Client.new
 
-# simples
+# creating events
+
+# with just a tag
+firebell.notify "project.category.event"
+
+# with a body
 firebell.notify "project.category.event", "category has event"
 
-# w/ attributes
-firebell.notify "project.category.event", { "location" => "http://" }
+# with parameters
+firebell.notify "project.category.event", "location" => "http://server/file"
+
+# with both
+firebell.notify "project.category.event", "location" => "http://server/file", "category has event"
 ```
 
 ## Installation
