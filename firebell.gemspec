@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Luke Carpenter"]
   spec.email         = ["x@rubynerd.net"]
   spec.summary       = %q{Push notifications as a service}
-  spec.description   = %q{A ruby client for Firebell, push notifications as a service}
+  spec.description   = %q{A ruby client for https://firebellapp.com - push notifications as a service}
   spec.homepage      = "https://github.com/ghostworks/firebell"
   spec.license       = "MIT"
 
