@@ -31,7 +31,11 @@ class Firebell::Client
   end
 
   def http
-    @http ||= Net::HTTP.new uri.host, uri.port
+    @http ||= begin
+      http = Net::HTTP.new uri.host, uri.port
+      http.use_ssl = true if uri.is_a?(URI::HTTPS)
+      http
+    end
   end
 
   def uri
