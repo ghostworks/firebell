@@ -20,6 +20,5 @@ describe Firebell::Configuration do
     c = Firebell::Configuration.new
     c.host = "http://cowbell.dev"
     expect(c.url).to eq "http://cowbell.dev/api/v1/events"
-
   end
 end

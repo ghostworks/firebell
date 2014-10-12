@@ -11,8 +11,8 @@ module Firebell
   end
 
   class Configuration
-    attr_writer :host, :url
-    attr_accessor :token
+    attr_writer :host, :url, :notify_release_stages
+    attr_accessor :token, :release_stage
 
     def host
       @host ||= "https://firebellapp.com"
@@ -26,6 +26,9 @@ module Firebell
       @url ||= "#{host}#{path}"
     end
 
+    def notify_release_stages
+      @notify_release_stages ||= []
+    end
   end
 end
 

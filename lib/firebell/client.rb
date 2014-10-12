@@ -19,7 +19,7 @@ class Firebell::Client
       attributes = { "tag" => tag }
     end
 
-    send_request attributes
+    send_request attributes if requestable?
   end
 
   private
@@ -40,5 +40,13 @@ class Firebell::Client
 
   def uri
     @uri ||= URI.parse Firebell.configuration.url
+  end
+
+  def requestable?
+    if Firebell.configuration.notify_release_stages.any?
+      Firebell.configuration.notify_release_stages.include? Firebell.configuration.release_stage
+    else
+      true
+    end
   end
 end

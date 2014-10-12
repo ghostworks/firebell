@@ -48,4 +48,32 @@ describe Firebell::Client do
     end
   end
 
+  describe "release stages" do
+    context "with a correct release stage set" do
+      before do
+        Firebell.configuration.notify_release_stages = %w{production staging}
+        Firebell.configuration.release_stage = "production"
+      end
+
+      it "makes a request" do
+        Firebell::Client.any_instance.expects(:send_request)
+          .with("tag" => "test.subject")
+
+        client.notify "test.subject"
+      end
+    end
+
+    context "with an incorrect release stage set" do
+      before do
+        Firebell.configuration.notify_release_stages = %w{production staging}
+        Firebell.configuration.release_stage = "development"
+      end
+
+      it "makes a request" do
+        Firebell::Client.any_instance.expects(:send_request).never
+
+        client.notify "test.subject"
+      end
+    end
+  end
 end
