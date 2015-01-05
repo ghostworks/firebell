@@ -24,10 +24,14 @@ class Firebell::Client
 
   private
   def send_request(attrs)
-    request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}"
-    request.set_form_data attrs
+    if @token
+      request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}"
+      request.set_form_data attrs
 
-    http.request(request)
+      http.request(request)
+    else
+
+    end
   end
 
   def http

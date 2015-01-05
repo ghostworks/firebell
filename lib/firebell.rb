@@ -1,6 +1,8 @@
 require "firebell/version"
 
 module Firebell
+  class NoTokenError < StandardError; end
+
   def self.configure
     yield configuration
     configuration
