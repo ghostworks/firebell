@@ -34,7 +34,7 @@ class Firebell::Client
         JSON.parse response.body
       end
     else
-
+      raise Firebell::NoTokenError
     end
   end
 
