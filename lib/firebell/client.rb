@@ -1,4 +1,5 @@
 require "net/http"
+require "json"
 
 class Firebell::Client
   attr_accessor :token
@@ -26,7 +27,7 @@ class Firebell::Client
   def send_request(attrs)
     if @token
       request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}"
-      request.set_form_data attrs
+      request.body = JSON.generate attrs
 
       http.request(request)
     else
