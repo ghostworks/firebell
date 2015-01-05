@@ -29,7 +29,10 @@ class Firebell::Client
       request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}"
       request.body = JSON.generate attrs
 
-      http.request(request)
+      response = http.request(request)
+      if response.code.to_i == 201
+        JSON.parse response.body
+      end
     else
 
     end
