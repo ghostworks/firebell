@@ -26,7 +26,7 @@ class Firebell::Client
   private
   def send_request(attrs)
     if @token
-      request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}"
+      request = Net::HTTP::Post.new uri.request_uri, "Authorization" => "Token #{@token}", "Content-Type" => "application/json"
       request.body = JSON.generate attrs
 
       response = http.request(request)
