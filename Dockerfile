@@ -9,6 +9,7 @@ COPY lib/firebell/version.rb lib/firebell/version.rb
 COPY Gemfile Gemfile.lock firebell.gemspec ./
 RUN pwd
 RUN find . 
+RUN echo $PATH
 RUN bundle install --verbose
 
 COPY . .
