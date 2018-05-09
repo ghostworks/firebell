@@ -5,7 +5,7 @@ RUN bundle config --global frozen 1
 
 WORKDIR /usr/src/app
 
-COPY Gemfile Gemfile.lock firebell.gemspec ./
+COPY Gemfile Gemfile.lock firebell.gemspec lib/firebell/version.rb ./
 RUN bundle install
 
 COPY . .
