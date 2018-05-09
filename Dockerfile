@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock firebell.gemspec lib/firebell/version.rb ./
 RUN pwd
+RUN ls -lah
 RUN bundle install --verbose
 
 COPY . .
