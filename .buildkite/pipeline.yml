@@ -1,5 +1,5 @@
 steps:
   - name: ":rspec:"
-    command: "rspec --color spec"
+    command: "rspec"
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
