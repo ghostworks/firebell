@@ -10,6 +10,7 @@ COPY Gemfile Gemfile.lock firebell.gemspec ./
 RUN pwd
 RUN find . 
 RUN echo $PATH
+RUN find /usr/local/bundle/bin
 RUN bundle install --verbose
 
 COPY . .
