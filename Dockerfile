@@ -13,6 +13,8 @@ RUN echo $PATH
 RUN find /usr/local/bundle/bin
 RUN bundle install --verbose
 
+RUN find /usr/local/bundle/bin
+
 COPY . .
 
 CMD ['ruby']
