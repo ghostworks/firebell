@@ -30,8 +30,11 @@ class Firebell::Client
       request.body = JSON.generate attrs
 
       response = http.request(request)
-      if response.code.to_i == 201
+
+      if response['Content-Type'] == "application/json"
         JSON.parse response.body
+      else
+        response.body
       end
     else
       raise Firebell::NoTokenError
