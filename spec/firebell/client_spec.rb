@@ -16,35 +16,35 @@ describe Firebell::Client do
 
   context "with a tag and body" do
     it "makes a request" do
-      Firebell::Client.any_instance.expects(:send_request).with("tag" => "test.subject", "body" => "hello")
-      client.notify "test.subject", "hello"
+      Firebell::Client.any_instance.expects(:send_request).with(tag: "test.subject", body: "hello")
+      client.notify tag: "test.subject", body: "hello"
     end
   end
 
   context "with a tag and parameters" do
     it "makes a request" do
       Firebell::Client.any_instance.expects(:send_request)
-        .with("tag" => "test.subject", "parameters" => { "p1" => 1 })
+        .with(tag: "test.subject", params: { "p1" => 1 })
 
-      client.notify "test.subject", "p1" => 1
+      client.notify tag: "test.subject", params: { "p1" => 1 }
     end
   end
 
   context "with a tag, parameters, and body" do
     it "makes a request" do
       Firebell::Client.any_instance.expects(:send_request)
-        .with("tag" => "test.subject", "parameters" => { "p1" => 1 }, "body" => "hello")
+        .with(tag: "test.subject", params: { "p1" => 1 }, body: "hello")
 
-      client.notify "test.subject", { "p1" => 1 }, "hello"
+      client.notify tag: "test.subject", params: { "p1" => 1 }, body: "hello"
     end
   end
 
   context "with just a tag" do
     it "makes a request" do
       Firebell::Client.any_instance.expects(:send_request)
-        .with("tag" => "test.subject")
+        .with(tag: "test.subject")
 
-      client.notify "test.subject"
+      client.notify tag: "test.subject"
     end
   end
 
@@ -57,9 +57,9 @@ describe Firebell::Client do
 
       it "makes a request" do
         Firebell::Client.any_instance.expects(:send_request)
-          .with("tag" => "test.subject")
+          .with(tag: "test.subject")
 
-        client.notify "test.subject"
+        client.notify tag: "test.subject"
       end
     end
 
@@ -72,7 +72,7 @@ describe Firebell::Client do
       it "makes a request" do
         Firebell::Client.any_instance.expects(:send_request).never
 
-        client.notify "test.subject"
+        client.notify tag: "test.subject"
       end
     end
   end
