@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    firebell (0.3.1)
+    firebell (0.3.2)
 
 GEM
   remote: https://rubygems.org/
