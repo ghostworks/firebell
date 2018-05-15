@@ -8,17 +8,10 @@ class Firebell::Client
     @token = token
   end
 
-  def notify(tag, body_or_params = nil, body = nil)
-    if body_or_params
-      if body_or_params.is_a?(Hash)
-        attributes = { "tag" => tag, "parameters" => body_or_params }
-        attributes.merge!("body" => body) if body
-      else
-        attributes = { "tag" => tag, "body" => body_or_params }
-      end
-    else
-      attributes = { "tag" => tag }
-    end
+  def notify(tag:, body: nil, params: {})
+    attributes = { tag: tag }
+    attributes.merge!(params: params) if params.any?
+    attributes.merge!(body: body) if body
 
     send_request attributes if requestable?
   end
@@ -30,8 +23,11 @@ class Firebell::Client
       request.body = JSON.generate attrs
 
       response = http.request(request)
-      if response.code.to_i == 201
+
+      if response['Content-Type'] == "application/json"
         JSON.parse response.body
+      else
+        response.body
       end
     else
       raise Firebell::NoTokenError

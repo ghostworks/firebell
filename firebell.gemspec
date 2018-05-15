@@ -6,7 +6,7 @@ require './lib/firebell/version'
 Gem::Specification.new do |spec|
   spec.name          = "firebell"
   spec.version       = Firebell::VERSION
-  spec.authors       = ["Luke Carpenter"]
+  spec.authors       = ["@rubynerd"]
   spec.email         = ["x@rubynerd.net"]
   spec.summary       = %q{Push notifications as a service}
   spec.description   = %q{A ruby client for https://firebellapp.com - push notifications as a service}
